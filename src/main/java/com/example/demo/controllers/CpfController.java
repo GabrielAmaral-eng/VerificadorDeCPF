@@ -16,8 +16,8 @@ public class CpfController {
         }
         int dv1Esperado = Character.getNumericValue(cpf.charAt(12));
         int dv2Esperado = Character.getNumericValue(cpf.charAt(13));
-        if (AutomatoService.calcularDigitosVerificadores(cpf)[0] == Character.getNumericValue(cpf.charAt(12)) &&
-                AutomatoService.calcularDigitosVerificadores(cpf)[1] == Character.getNumericValue(cpf.charAt(13))){
+        if (AutomatoService.calcularDigitosVerificadores(cpf)[0] == dv1Esperado &&
+                AutomatoService.calcularDigitosVerificadores(cpf)[1] == dv2Esperado){
             return ResponseEntity.status(HttpStatus.OK).body("CPF Válido");
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro nos digitos verificadores. CPF Inválido");
